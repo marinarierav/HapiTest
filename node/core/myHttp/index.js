@@ -18,6 +18,8 @@ class myHttp {
                 'Content-Length': data.length,
             }
         }
+
+        console.log(data)
         
         const req = http.request(options, res => {
             console.log(`Sent message with statusCode: ${res.statusCode}\n`)
@@ -42,7 +44,7 @@ class myHttp {
         const options = {
             hostname: 'localhost',
             port: 8161,
-            path: '/api/message/'+inQueue+'?type=queue',
+            path: '/api/message?destination=queue://' + inQueue,
             method: 'GET',
             auth: 'admin:admin',
             headers: {

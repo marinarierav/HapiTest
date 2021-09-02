@@ -6,7 +6,7 @@ const init = async () => {
 
 	// Define Server Config
 	const server = new Hapi.Server({
-		port: process.env.port || 3000,
+		port: process.argv[3] || 3000,
 		host: 'localhost',
 		routes: require('./core/routes')
 	});
@@ -18,7 +18,8 @@ const init = async () => {
 	server.register({
 		plugin: require('./core'),
         options: {
-            name: 'mainPlugin'
+            name: 'mainPlugin',
+            arguments: process.argv
         }
 	});
 }
