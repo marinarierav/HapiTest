@@ -44,7 +44,8 @@ class myHttp {
         const options = {
             hostname: 'localhost',
             port: 8161,
-            path: '/api/message?destination=queue://' + inQueue,
+            //path: '/api/message?destination=queue://' + inQueue + '&oneShot=true',
+            path: '/api/message?destination=queue://' + inQueue + '&clientId=consumerA',
             method: 'GET',
             auth: 'admin:admin',
             headers: {
